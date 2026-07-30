@@ -1,0 +1,26 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.ViscositySolutionsHamiltonJacobiEquationsCanonicalLaneLean.ViscosityAnalyticCertificate
+import HautevilleHouse.ViscositySolutionsHamiltonJacobiEquationsCanonicalLaneLean.ViscositySolutionEndpointLayer
+
+namespace HautevilleHouse
+namespace ViscositySolutionsHamiltonJacobiEquationsCanonicalLaneLean
+
+def ViscosityAdmittedAnalyticClosure : Prop :=
+  ViscosityAnalyticCertificateClosed sourceViscosityAnalyticCertificate ∧
+  ConstrainedTheoremClosure viscosityAdmissibleClass
+
+def UnrestrictedClassicalHJBoundaryCarried : Prop :=
+  formalizationCertificate.theoremBoundaryOpen = true ∧
+  mathlibPDESubstrate.unrestrictedNavierStokesStackCarried = true
+
+theorem viscosity_admitted_analytic_closure_checked :
+    ViscosityAdmittedAnalyticClosure := by
+  exact And.intro source_viscosity_analytic_certificate_closed
+    (constrained_theorem_closure viscosityAdmissibleClass)
+
+theorem unrestricted_classical_hj_boundary_carried_checked :
+    UnrestrictedClassicalHJBoundaryCarried := by
+  exact And.intro rfl rfl
+
+end ViscositySolutionsHamiltonJacobiEquationsCanonicalLaneLean
+end HautevilleHouse
